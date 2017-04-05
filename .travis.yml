@@ -13,7 +13,8 @@ before_install:
   - sudo docker-compose up wekandb
   - sleep 10s
   - sudo docker-compose up wekan
-  - sudo docker-compose logs wekan
+  - OUTPUT=$(sudo docker-compose logs wekan)
+  - $OUTPUT == "" || exit 1
   - sudo docker exec -ti wekan /bin/sh -c "npm test"
 
 language: node_js
