@@ -89,7 +89,7 @@ RUN \
     \
     # Build app
     cd /home/wekan/app && \
-    gosu wekan /home/wekan/meteor/.meteor add standard-minifier-js && \
+    gosu wekan /home/wekan/.meteor/meteor add standard-minifier-js && \
     gosu wekan /home/wekan/.meteor/meteor build --directory /home/wekan/app_build && \
     cd /home/wekan/app_build/bundle/programs/server/ && \
     gosu wekan npm install && \
