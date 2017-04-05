@@ -10,9 +10,9 @@ before_install:
   - sudo chmod +x docker-compose
   - sudo mv docker-compose /usr/local/bin
   - sudo docker-compose build --no-cache --force-rm
-  - sudo docker-compose up wekandb
+  - sudo docker-compose up -d wekandb
   - sleep 10s
-  - sudo docker-compose up wekan
+  - sudo docker-compose up -d wekan
   - OUTPUT=$(sudo docker-compose logs wekan)
   - $OUTPUT == "" || exit 1
   - sudo docker exec -ti wekan /bin/sh -c "npm test"
