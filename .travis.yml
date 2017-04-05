@@ -10,8 +10,11 @@ before_install:
   - sudo chmod +x docker-compose
   - sudo mv docker-compose /usr/local/bin
   - sudo docker-compose build --no-cache --force-rm
-  - sudo docker-compose up && docker ps -a
-  - sudo docker run wekan-app /bin/sh -c "npm test"
+  - sudo docker-compose up wekan-db
+  - sleep 10s
+  - sudo docker-compose up wekan-app
+  - sudo docker-compose logs wekan-app
+  - sudo docker exec -ti wekan-app /bin/sh -c "npm test"
 
 language: node_js
 
