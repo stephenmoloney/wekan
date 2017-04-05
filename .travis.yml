@@ -14,6 +14,7 @@ before_install:
   - sleep 10s
   - sudo docker-compose up -d wekan
   - OUTPUT=$(sudo docker-compose logs wekan)
+  - echo $OUTPUT
   - if [[ $OUTPUT == "" ]]; then echo "wekan seems to have run without error"; else exit 1; fi
   - sudo docker exec -ti wekan /bin/sh -c "npm test"
 
